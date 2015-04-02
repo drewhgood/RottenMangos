@@ -49,3 +49,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'rmagick', '~> 2.13.4',  :require => 'RMagick'
 # gem "rmagick", :require => 'RMagick'
 gem 'carrierwave'
+
+gem 'kaminari'

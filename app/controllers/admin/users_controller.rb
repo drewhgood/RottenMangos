@@ -1,7 +1,9 @@
+
 class Admin::UsersController < ApplicationController
 
+
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(10)
   end
 
   def show
@@ -17,7 +19,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(User_params)
+    @user = User.new(user_params)
 
     if @user.save
       redirect_to users_path, notice: "#{@user.name} was successfully created!"
@@ -29,23 +31,23 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if @user.update_attributes(User_params)
-      redirect_to User_path(@user)
+    if @user.update_attributes(user_params)
+      redirect_to admin_user_path(@user), notice: "#{@user.firstname} was successfully updated!"
     else
-      render :edit
+      render :edit , notice: "Fail Blog! #{@user.firstname}'s' update failed!"
     end
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path
+    redirect_to admin_users_path, notice: "successfully deleted user."
   end
 
   protected
 
-  def User_params
-    params.require(:User).permit(params)
+  def user_params
+    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :is_admin)
   end
 
 end

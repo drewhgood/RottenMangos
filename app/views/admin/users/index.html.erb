@@ -1,6 +1,10 @@
-<h1> All Users</h1>
+<h1>Users</h1>
+<hr />
 <% @users.each do |user| %>
-<ul>
- <li> <h4><%=user.firstname%> <%=user.lastname%> </h4></li>
-</ul>
-<%end%> 
+  <h2><%= user.firstname %> <%= user.lastname %></h2>
+  <%=button_to "Delete", admin_user_path(user.id), :method => :delete, :class => "delete", :confirm => "Are you sure ?"%>
+<% end %>
+
+<%= paginate @users %>
+<%= page_entries_info @users %>
+<hr />
