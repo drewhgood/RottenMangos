@@ -48,3 +48,8 @@ ActiveRecord::Schema.define(version: 20150401234509) do
   end
 
 end
+
+# #create Reviews
+# reviews.times do
+#   Review.create!(user:  User.find(1), movie:  User.find(1), rating_out_of_ten: rand(1..10), text: Faker::Lorem.sentence(3))
+# end

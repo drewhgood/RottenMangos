@@ -51,3 +51,5 @@ gem 'rmagick', '~> 2.13.4',  :require => 'RMagick'
 gem 'carrierwave'
 
 gem 'kaminari'
+
+gem 'faker'

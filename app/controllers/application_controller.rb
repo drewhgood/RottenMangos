@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
     @current_user.is_admin == true if current_user
   end
 
-  helper_method :current_user
-  helper_method :confirm_admin
+  helper_method :current_user, :confirm_admin
   
 end

@@ -22,16 +22,20 @@ class Movie < ActiveRecord::Base
   validates :release_date,
     presence: true
 
-  validate :release_date_is_in_the_future
+  # validate :release_date_is_in_the_future
   # do_not_validate_attachment_file_type :image
 
   def review_average
     if self.reviews.count > 0
-      "#{self.reviews.average(:rating_out_of_ten)}/10"
+      "#{self.reviews.average(:rating_out_of_ten).to_i}/10"
     else
       "No Reviews Yet"
     end
 
+  end
+
+  def self.search(query)
+    where("title like ?", "%#{query}%") 
   end
 
   protected
