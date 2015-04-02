@@ -35,7 +35,7 @@ class Movie < ActiveRecord::Base
   end
 
   def self.search(query)
-    where("title like ?", "%#{query}%") 
+    where("title like ? or director like ?", "%#{query}%", "%#{query}%") 
   end
 
   protected

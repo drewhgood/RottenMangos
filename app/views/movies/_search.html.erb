@@ -5,6 +5,6 @@
 <#% end %> -->
 
 <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+  <%= text_field_tag :query, params[:query], placeholder: "Search" %>
   <%= submit_tag "Search", :name => nil %>
 <% end %>
