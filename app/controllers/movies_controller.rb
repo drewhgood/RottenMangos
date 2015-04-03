@@ -3,7 +3,13 @@ class MoviesController < ApplicationController
   def index
 
     if params[:query]
-      @movies = Movie.search(params[:query]).order("created_at DESC")
+      if params[:query] != ""
+        @movies = Movie.search(params[:query]).order("created_at DESC")
+      else
+        flash.now[:error] = "Enter search terms!"
+        @movies = Movie.all
+
+      end
     else
       @movies = Movie.all
     end
