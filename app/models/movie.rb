@@ -35,8 +35,11 @@ class Movie < ActiveRecord::Base
   end
 
   def self.search(query)
-    where("title like ? or director like ?", "%#{query}%", "%#{query}%") 
+    # where("title like ? or director like ?", "%#{query}%", "%#{query}%") 
   end
+
+  scope :by_title, -> title { where(title: title)}
+
 
   protected
 

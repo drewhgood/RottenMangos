@@ -1,13 +1,50 @@
-<h1>Rotten Mangoes</h1>
-<%= render 'search' %>
-<%= link_to "Submit a movie!", new_movie_path %>
-<hr>
+
+
+
+ <!-- begin:for-sale -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="heading-title">
+              <h2>Rotten Mangos</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        
+
+
+
 <% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
-  <h2><%= link_to movie.title, movie_path(movie) %> | <%= movie.review_average %> </h2>
-  <%= image_tag movie.image_url if movie.image? %>
-  <h3><%= formatted_date(movie.release_date) %></h3>
-  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %></p>
-  <hr>
+
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="property-container">
+              <div class="property-image">
+                <img src="<%= image_tag movie.image_url if movie.image? %>">
+                <div class="property-price">
+                  <h4>Residential</h4>
+                  <span><%= movie.review_average %></span>
+                </div>
+              </div>
+              <div class="property-content">
+                <h3><a href="#"><%= link_to movie.title, movie_path(movie) %></a> <small>Dir. <%= movie.director %></small></h3>
+                <p><%= movie.description %></p>
+              </div>
+              <div class="property-features">
+                <span><i class="fa fa-home"></i><%= movie.runtime_in_minutes %> minutes</span>
+                <span><i class="fa fa-hdd-o"></i><%= formatted_date(movie.release_date) %></span>
+                <span><i class="fa fa-male"></i> 2 Bath</span>
+                <span><i class="fa fa-car"></i> 2 Garages</span>
+              </div>
+            </div>
+          </div>
+  
 <% end %>
+
+
+
+
+
+
+
+        </div>
+        <!-- end:for-sale -->
